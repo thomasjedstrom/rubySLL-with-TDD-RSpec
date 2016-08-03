@@ -31,19 +31,83 @@ class SLL
 		current
 	end
 	def remove(val)
-		previous = self.head
-		current = previous.next
-		while previous.next != val
-			previous = previous.next
-			if previous == nil
-				break
+		current = self.head
+		while (current.value != val) && (current.next != nil)
+			previous = current
+			current = current.next
+		end
+		if current.next == nil
+			return nil
+		end
+		previous.next = current.next
+	end
+	def display_nodes
+		arr = []
+		current = self.head
+		if current != nil
+			arr.push(current)
+			while current.next != nil
+				current = current.next
+				arr.push(current)
 			end
 		end
-		if previous != nil
-			previous.next = current.next
+		arr
+	end
+	def display_values
+		arr = []
+		current = self.head
+		if current != nil
+			arr.push(current.value)
+			while current.next != nil
+				current = current.next
+				arr.push(current.value)
+			end
 		end
-		previous
+		arr
+	end
+	def add(val)
+		current = self.head
+		while current.next != nil
+			current = current.next
+		end
+		newNode = Node.new(val)
+		current.next = newNode
+	end
+	def removeALL
+		self.head = nil
+	end
+	def min
+		min = self.head
+		current = self.head
+		while current.next != nil
+			current = current.next
+			if current.value < min.value
+				min = current
+			end
+		end
+		min
+	end
+	def max
+		max = self.head
+		current = self.head
+		while current.next != nil
+			current = current.next
+			if current.value > max.value
+				max = current
+			end
+		end
+		max
+	end
+	def how_many
+		count = 0
+		current = self.head
+		if current != nil
+			count += 1
+			while current.next != nil
+				current = current.next
+				count += 1
+			end
+		end
+		count
 	end
 end
-
-

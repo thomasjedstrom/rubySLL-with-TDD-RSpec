@@ -38,24 +38,33 @@ RSpec.describe SLL do
 		@newList.remove(3)
 		expect(@node2.next).to eq(@node4)
 	end
-	# it 'SLL should have a method called display_nodes which when called shows an array of all of the current nodes in the list' do
-	# 	expect(@newList).to eq()
-	# end
-	# it 'SLL should have a method called display_values which when called shows an array of all the current values in the SLL' do
-	# 	expect(@newList).to eq()
-	# end
-	# it 'SLL should have a method called add which when invoked add that node to the end of the SLL' do
-	# 	expect(@newList).to eq()
-	# end
-	# it 'SLL should have a method called removeAll which when invoked removes all of the nodes from the SLL' do
-	# 	expect(@newList).to eq()
-	# end
-	# it 'SLL should have two methods called min and max which return the min and max values of the SLL' do
-	# 	expect(@newList).to eq()
-	# end
-	# it 'SLL should have a method called how_many which when called returns the count of how many nodes are in the SLL' do
-	# 	expect(@newList).to eq()
-	# end
+	it 'SLL should have a method called display_nodes which when called shows an array of all of the current nodes in the list' do
+		arr = @newList.display_nodes
+		newarr = []
+		arr.each{|x| newarr.push(x.value)}
+		expect(newarr).to eq([1, 2, 3, 4])
+	end
+	it 'SLL should have a method called display_values which when called shows an array of all the current values in the SLL' do
+		expect(@newList.display_values).to eq([1, 2, 3, 4])
+	end
+	it 'SLL should have a method called add which when invoked add that node to the end of the SLL' do
+		@newList.add(30)
+		newNode = @node4.next
+		expect(@node4.next).to eq(newNode)
+	end
+	it 'SLL should have a method called removeAll which when invoked removes all of the nodes from the SLL' do
+		@newList.removeALL
+		expect(@newList.head).to eq(nil)
+	end
+	it 'SLL should have two methods called min and max which return the min and max values of the SLL' do
+		min = @newList.min
+		max = @newList.max
+		expect(min.value).to eq(1)
+		expect(max.value).to eq(4)
+	end
+	it 'SLL should have a method called how_many which when called returns the count of how many nodes are in the SLL' do
+		expect(@newList.how_many).to eq(4)
+	end
 
 end
 
